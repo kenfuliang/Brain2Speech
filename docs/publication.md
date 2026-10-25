@@ -131,12 +131,25 @@ Verification before the audit documentation update:
   preserved files supplied locally, **all 202 tests passed in 5.79 seconds**.
   The fixtures remain excluded, and no training or real-data decoding was rerun.
 
-**Public-object limitation, observed after the force-push:** anonymous GitHub API
-requests return 404 for the current signing-key path, but 200 for its old upstream
-commit and for the obsolete personal-email commit. The repository was still in
-the upstream fork network at this check. Rewritten branch history alone does not
-remove those public objects. Standalone-repository conversion or GitHub support
-is required before claiming that those old URLs no longer expose the material.
+**Historical fork-network check:** immediately after the initial force-push,
+anonymous requests still retrieved the old key and personal-email commit through
+the fork network. With explicit user authorization, the fork was deleted and
+recreated at the same URL as a **standalone public repository**. Description and
+topics were restored, and only the sanitized `main` branch was pushed.
+
+**Standalone public-object verification:** GitHub reports `fork: false` and
+public visibility. Anonymous checks return 404 for the key at current and old
+paths, its raw URL, and its original Git blob. The obsolete personal-email
+commit request is rejected with 422 (unknown commit), exposing no commit data.
+There are no public tags, pull requests, releases, or Actions artifacts.
+
+**Outside this repository:** the orphaned personal-email commit is still
+retrievable through the former upstream fork network. A private GitHub Support
+request is prepared locally for its cached/orphaned-object removal. No support
+message was sent automatically. The original upstream sample key also remains
+upstream; this project cannot remove other owners' source history or recall
+previous clones. Therefore the verified claim is restricted to the sanitized
+standalone repository and tested URLs, not global erasure from GitHub.
 
 Use a fresh clone after the rewrite. Do not merge or push old branches or tags
 back into the sanitized history. Private local backups are outside this public
