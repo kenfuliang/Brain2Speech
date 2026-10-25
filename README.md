@@ -97,6 +97,11 @@ Detailed methods, controls, negative results, and next decisions live in the
 
 ## Use the repository
 
+History was sanitized on 2026-10-25 to remove inherited signing material. Use a
+fresh clone if you cloned an earlier version; see the
+[history cleanup and public-object verification](docs/publication.md#history-cleanup-and-verification-2026-10-25).
+
+
 ```bash
 git clone --recurse-submodules https://github.com/kenfuliang/Brain2Speech.git
 cd Brain2Speech

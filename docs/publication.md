@@ -18,7 +18,8 @@ Their dated observations remain dated observations.
 
 Published: source code, tests, frozen configuration and artifact manifests,
 research plans, literature audits, the ledger/report, and selected report figures.
-The original speechBCI history is preserved.
+Upstream authorship and lineage are preserved, with Android signing material
+removed throughout reachable published history.
 
 Excluded: downloaded data/papers, extracted archives, model checkpoints,
 virtual environments, runtime caches, and raw outputs under `research/runs/` and
@@ -83,8 +84,8 @@ research inputs and outputs were not uploaded or removed.
   passwords were removed from the current source tree. Debug signing remains
   managed locally by the Android Gradle plugin; releases are unsigned until a
   private local signing configuration is supplied. Signing-file extensions are
-  ignored to prevent accidental additions. The inherited Git history still
-  contains the upstream material; this removal does not purge old commits.
+  ignored to prevent accidental additions. That first source-tree removal did
+  not purge old commits; the subsequent history rewrite is recorded below.
   After removal, all **202 research tests passed** in 5.95 seconds in the existing
   BIT environment. Research, reproduction, NeuralDecoder, and x86 decoder source
   trees are unchanged. Signing-reference checks and the staged secret scan pass.
@@ -101,3 +102,42 @@ research inputs and outputs were not uploaded or removed.
 This is a bounded repository review, not a guarantee that every possible form
 of sensitive information has been detected. Published findings remain dated
 research records, with the evidence-availability limitations described above.
+
+## History cleanup and verification (2026-10-25)
+
+The public `main` history was rewritten in an isolated mirror using
+`git-filter-repo --sensitive-data-removal`. All 52 commits were processed:
+the Android signing-key path was removed and its release-signing configuration,
+including hardcoded passwords, was removed from historical Gradle blobs.
+Original authorship and research source contents were retained. Commit IDs
+changed; source pins in literature audits refer to the original external source.
+
+Verification before the audit documentation update:
+
+- Public refs: one branch (`main`), no tags or pull requests; no releases or
+  Actions artifacts. All 2,835 reachable Git blobs were inspected for the removed
+  key/reference, signing-password assignment, personal email, private key PEM,
+  and private interview/home-path markers: zero matches. The original binary
+  key object is absent from the sanitized reachable object set.
+- Gitleaks scanned the rewritten history (44 commits with scannable changes,
+  approximately 48.12 MB), with zero findings. The pinned BIT submodule snapshot
+  also produced zero findings. Manual literal-password review found only the
+  upstream Redis documentation's generic `auth` examples, not live credentials.
+- The rewritten head tree was identical to the pre-rewrite head tree before this
+  documentation update. Research, reproduction, neural decoder, and x86 decoder
+  contents were therefore unchanged by history sanitation.
+- A clean checkout passed 200 tests; two optimizer-parity tests require ignored
+  local reference files under `reproduction/results/retraining/`. With those
+  preserved files supplied locally, **all 202 tests passed in 5.79 seconds**.
+  The fixtures remain excluded, and no training or real-data decoding was rerun.
+
+**Public-object limitation, observed after the force-push:** anonymous GitHub API
+requests return 404 for the current signing-key path, but 200 for its old upstream
+commit and for the obsolete personal-email commit. The repository was still in
+the upstream fork network at this check. Rewritten branch history alone does not
+remove those public objects. Standalone-repository conversion or GitHub support
+is required before claiming that those old URLs no longer expose the material.
+
+Use a fresh clone after the rewrite. Do not merge or push old branches or tags
+back into the sanitized history. Private local backups are outside this public
+repository and are not included in pushes.
