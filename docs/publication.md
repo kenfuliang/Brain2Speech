@@ -1,0 +1,66 @@
+---
+title: "Brain2Speech public repository scope and provenance"
+status: current
+last_reviewed: 2026-10-25
+owner: Brain2Speech
+canonical_for: public repository contents, publication boundary, and source attribution
+---
+
+# Public repository scope and provenance
+
+This public snapshot packages existing research. It does not update scientific
+findings or authorize training. The [experiment ledger](research-notes.md) owns
+methods, metrics, findings, and experiment status. The
+[comparative report](research-results-report.md) owns reader-facing comparisons.
+Their dated observations remain dated observations.
+
+## Included and excluded evidence
+
+Published: source code, tests, frozen configuration and artifact manifests,
+research plans, literature audits, the ledger/report, and selected report figures.
+The original speechBCI history is preserved.
+
+Excluded: downloaded data/papers, extracted archives, model checkpoints,
+virtual environments, runtime caches, and raw outputs under `research/runs/` and
+`reproduction/results/`. These remain local; publication deletes none of them.
+Some report figures and linked receipts refer to those excluded folders; several
+figure targets were already absent from the local workspace at publication.
+Missing plots are not regenerated or substituted during publication.
+Their absence from this repository is not a claim that the supporting evidence
+has been independently downloaded or verified by a reader.
+
+A fresh clone needs the separately downloaded public artifacts before running
+real-data experiments. Consult [the reproduction workflow](../reproduction/README.md)
+and its pinned archive manifest. Tests using data, checkpoints, or optional
+runtimes can also require local dependencies; source publication alone does not
+establish that every experiment can run on another machine.
+
+## Sources and licensing
+
+- speechBCI: [fwillett/speechBCI](https://github.com/fwillett/speechBCI),
+  base commit `522a9605ccf0818def80b6fd80007598e790408e`.
+- BIT: [yzhang511/bit](https://github.com/yzhang511/bit), pinned Git submodule
+  `research/vendor/bit-f107ae9` at
+  `f107ae988d782609b78d1d7488490cca9fb7a103`. Its MIT license remains with the source.
+  Initialize with `git submodule update --init --recursive` after cloning.
+- Preserve existing component and third-party license notices. No new blanket
+  license is applied to upstream code. The missing root speechBCI license and
+  component-specific terms are documented in the canonical
+  [source and reproducibility audit](research/willett-2023-speech-neuroprosthesis-reproducibility.md#licensing-and-availability-caveats).
+
+The upstream README material is retained below the Brain2Speech introduction;
+its authorial voice and published results belong to the original project.
+Independent measurements are attributed in the ledger and report.
+
+## Publication validation (2026-10-25)
+
+- `python -m pytest research/tests -q`: **202 passed** in the existing BIT
+  environment (Python 3.11, torch 2.14.1, numpy 2.4.6, transformers 4.51.3,
+  pytest 9.1.1). The base v1 environment lacks transformers and cannot collect
+  the BIT tests; use the appropriate optional runtime.
+- Secret scanning of the proposed source commit and all 45 upstream commits
+  found no credentials. This is a publication check, not a scientific audit.
+- No newly added file exceeds 10 MiB; raw datasets/checkpoints and interview
+  materials are excluded. Existing upstream files and notices remain intact.
+
+These checks do not rerun training, decode the dataset, or establish new results.

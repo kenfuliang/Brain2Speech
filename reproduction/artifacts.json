@@ -1,0 +1,81 @@
+{
+  "paper": {
+    "doi": "10.1038/s41586-023-06377-x",
+    "files": [
+      {
+        "name": "willett-2023-high-performance-speech-neuroprosthesis.pdf",
+        "path": "papers/willett-2023-high-performance-speech-neuroprosthesis.pdf",
+        "sha256": "0fca4ed4d2d6ecdc7eaebf03c64a514f03268b64dca170281d2abae70ad298a9",
+        "url": "https://www.nature.com/articles/s41586-023-06377-x.pdf"
+      },
+      {
+        "name": "willett-2023-supplementary-information.pdf",
+        "path": "papers/willett-2023-supplementary-information.pdf",
+        "sha256": "3cfa194e1d710e3ab66320e74f3310ca40d3465138a5630cbe0987d9ec49be0f",
+        "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-023-06377-x/MediaObjects/41586_2023_6377_MOESM1_ESM.pdf"
+      }
+    ]
+  },
+  "code": {
+    "repository": "https://github.com/fwillett/speechBCI.git",
+    "commit": "522a9605ccf0818def80b6fd80007598e790408e"
+  },
+  "dataset": {
+    "doi": "10.5061/dryad.x69p8czpq",
+    "api_version_id": 253293,
+    "dataset_version": 9,
+    "release_label": "version 4",
+    "total_bytes": 80440635830,
+    "files": [
+      {
+        "name": "competitionData.tar.gz",
+        "file_id": 2547369,
+        "size": 3669638707,
+        "sha256": "5b5c9784d80d5286e69352621366be2e4ff468e043e082e7aa7cbc90d18336b3",
+        "role": "core-data"
+      },
+      {
+        "name": "derived.tar.gz",
+        "file_id": 2547370,
+        "size": 8062039321,
+        "sha256": "44d31076a68969738a72475d3dc708fd91c3d6c2f9adcadba7496f48b3e31117",
+        "role": "checkpoint-and-tfrecords"
+      },
+      {
+        "name": "diagnosticBlocks.tar.gz",
+        "file_id": 2547371,
+        "size": 612391492,
+        "sha256": "dc204dda6a67f25824f6f9b7a7cb6b83ca8142376a9787ebb66fa223402882e7",
+        "role": "analysis-data"
+      },
+      {
+        "name": "languageModel_5gram.tar.gz",
+        "file_id": 2547359,
+        "size": 38245502441,
+        "sha256": "bb2b15cc13d40e484359ffe0afe74580cdbad02440c27586074bfe2e51e7867e",
+        "role": "5gram-model"
+      },
+      {
+        "name": "languageModel.tar.gz",
+        "file_id": 2547356,
+        "size": 14106240558,
+        "sha256": "7b64d36c64765dc0a5e890bb0cc795657c827b7d314fbf5ed5dc8778bd166d7e",
+        "role": "3gram-model"
+      },
+      {
+        "name": "sentences.tar.gz",
+        "file_id": 2547372,
+        "size": 14803440418,
+        "sha256": "d354c97d3fa5e4684adb7046de73e5a21fde805824954490e34cb042d1c948da",
+        "role": "full-sentence-data"
+      },
+      {
+        "name": "tuningTasks.tar.gz",
+        "file_id": 2547373,
+        "size": 941344404,
+        "sha256": "8e245a00391f7d6558e6846effdfb29d0c145872864b110a85523a6a2a40fcbf",
+        "role": "analysis-data"
+      }
+    ]
+  }
+}

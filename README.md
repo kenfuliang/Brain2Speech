@@ -1,5 +1,49 @@
-## A high-performance speech neuroprosthesis
+# Brain2Speech
+
+Independent brain-to-text reproduction and research by Ken-Fu Liang, based on
+[Frank Willett and collaborators' speechBCI](https://github.com/fwillett/speechBCI)
+at commit `522a9605ccf0818def80b6fd80007598e790408e`.
+
+Start with the [comparative research report](docs/research-results-report.md),
+[canonical experiment ledger](docs/research-notes.md), and
+[reproduction instructions](reproduction/README.md).
+
+**Public snapshot: 2026-10-25.** Research findings retain their recorded review
+dates (latest canonical review: 2026-10-12); publication does not mean that
+experiments have been rerun or that unfinished work has completed. The released
+checkpoint replay measured **18.8756% offline WER on 600 public-test trials**
+against the upstream 18.8% reference. See the ledger for the tolerance caveat,
+training comparisons, negative findings, and incomplete experiments. This is
+brain-to-text research; it does not reproduce the live participant experiment.
+
+This repository publishes code, protocols, reports, and selected figures.
+Datasets, downloaded papers, model weights, environments, and raw run artifacts
+are excluded. Links into `research/runs/` or other ignored artifact folders refer
+to preserved local evidence and will not resolve in a fresh clone. See the
+[publication scope and provenance](docs/publication.md).
+
+```mermaid
+flowchart LR
+    A[Public source artifacts] --> B[Verify and reproduce offline baseline]
+    B --> C[Controlled research experiments]
+    C --> D[Audit metrics and evidence]
+    D --> E[Canonical ledger and comparative report]
+```
+
+## Upstream project: A high-performance speech neuroprosthesis
+
+The upstream overview below is retained for attribution and setup context.
+References to the original paper's results and authors describe speechBCI,
+not independent Brain2Speech findings.
 [![System diagram](SystemDiagram.png)](https://www.nature.com/articles/s41586-023-06377-x)
+
+## Brain2Speech research program
+
+Our research thesis, mandatory experiment methodology, metric definitions, iteration scorecard, findings, and next-step decisions are maintained in the canonical [Brain2Speech research notes and experiment ledger](docs/research-notes.md). Detailed paper reviews and run artifacts support that ledger but do not redefine its experiment status or decisions.
+
+The [v1 research plan](docs/research-plan-v1.md) specifies causal LFADS-inspired Brain2Text, chronological cross-day adaptation, and sequential encoder-update analysis.
+
+The [single comparative research report](docs/research-results-report.md) presents Willett's reference results, our reproduced baseline, and the v1 proposal using the same result format.
 
 ## Overview
 
@@ -26,7 +70,4 @@ When trained on the "train" partition and evaluated on the "test" partition, our
 ## Installation
 
 NeuralDecoder should be installed as a python package (pip install -e .) using Python 3.9. LanguageModelDecoder needs to be compiled first and then installed as a python package (see LanguageModelDecoder/README.md). 
-
-
-
 

@@ -44,5 +44,27 @@ __pycache__/
 
 Archive/*
 
+# Reproduction inputs and generated outputs (large, immutable artifacts)
+artifacts/
+papers/
+workspace/
+reproduction/results/
+.venv-v1/
+.venv-e008-bootstrap/
+.venv-e008-metal/
+.venv-bit/
+.runtime-e008/
+research/runs/
+research/data/
+
 # Matlab
 *.asv
+
+# Local credentials, caches, and publication tooling
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.pytest_cache/
+.gitleaks-report*.json

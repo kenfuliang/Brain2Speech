@@ -118,7 +118,9 @@ if(NOT MSVC)
                         "LDFLAGS=-L${gflags_BINARY_DIR} -L${glog_BINARY_DIR}"
                         "LIBS=-lgflags_nothreads -lglog -lpthread"
     COMMAND           ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/patch/openfst ${openfst_SOURCE_DIR}
-    BUILD_COMMAND     make -j 4
+    # Serial compilation avoids cc1plus crashes under linux/amd64 emulation on
+    # Apple Silicon while preserving the generated binaries.
+    BUILD_COMMAND     make -j 1
   )
   add_dependencies(openfst gflags glog)
   add_dependencies(utils openfst)
