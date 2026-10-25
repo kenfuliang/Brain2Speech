@@ -68,3 +68,9 @@ research/data/
 *.key
 .pytest_cache/
 .gitleaks-report*.json
+
+# Private signing material (Android and other release builds)
+*.keystore
+*.jks
+*.p12
+*.pfx

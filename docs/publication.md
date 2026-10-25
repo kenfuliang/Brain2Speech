@@ -77,11 +77,18 @@ research inputs and outputs were not uploaded or removed.
   found no private interview/business materials, personal home paths, private
   network addresses, or credential files in the Brain2Speech additions.
   Report-image metadata had no detected local-path, GPS, or personal-email marker.
-- The upstream tree includes a WeNet Android example signing keystore with
-  hardcoded passwords in its Gradle configuration. The keystore is byte-identical
-  to the pinned public upstream version. This is inherited signing material,
-  not newly supplied Brain2Speech credentials; it must not be used as a private
-  production signing identity. The generic secret scan did not flag it.
+- The review found an inherited WeNet Android example signing keystore and
+  hardcoded Gradle signing passwords; the generic secret scan did not flag them.
+  On 2026-10-25, the keystore, explicit release signing configuration, and both
+  passwords were removed from the current source tree. Debug signing remains
+  managed locally by the Android Gradle plugin; releases are unsigned until a
+  private local signing configuration is supplied. Signing-file extensions are
+  ignored to prevent accidental additions. The inherited Git history still
+  contains the upstream material; this removal does not purge old commits.
+  After removal, all **202 research tests passed** in 5.95 seconds in the existing
+  BIT environment. Research, reproduction, NeuralDecoder, and x86 decoder source
+  trees are unchanged. Signing-reference checks and the staged secret scan pass.
+  The Android app was not built, and no real-data training/decoding was rerun.
 - The upstream test-logit NumPy fixture is also unchanged. Upstream notebooks
   and third-party sources retain their original public paths and metadata.
   Author identities in upstream history remain attributed to their authors.

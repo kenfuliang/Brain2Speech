@@ -21,6 +21,15 @@ Or you can train your own model using WeNet training pipeline on your data.
 
 ### 2) Build APK
 
+**Signing in this fork (2026-10-25):** the inherited example release keystore and
+hardcoded signing passwords have been removed. Debug builds use the Android
+Gradle plugin's standard local debug signing. Release builds have no signing
+configuration and produce unsigned artifacts; configure your own private
+signing identity locally before distributing an APK. Keep signing files and
+passwords outside version control. Android demo signing is separate from the
+Python research tests and Linux decoder/reproduction workflow.
+
+
 When your model is ready, put `final.zip` and `words.txt` into Android assets (`app/src/main/assets`) folder,
 then just build and run the APK. Here is a gif demo, which shows how our on-device streaming e2e ASR runs with low latency.
 Please note the wifi and data has been disabled in the demo so there is no network connection ^\_^.
