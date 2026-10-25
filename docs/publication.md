@@ -48,9 +48,10 @@ establish that every experiment can run on another machine.
   component-specific terms are documented in the canonical
   [source and reproducibility audit](research/willett-2023-speech-neuroprosthesis-reproducibility.md#licensing-and-availability-caveats).
 
-The upstream README material is retained below the Brain2Speech introduction;
-its authorial voice and published results belong to the original project.
-Independent measurements are attributed in the ledger and report.
+The root README distinguishes independent results from upstream reference
+claims and links to the original README at the pinned source commit. Original
+upstream README versions remain in Git history. Independent measurements are
+attributed in the ledger and report.
 
 ## Publication validation (2026-10-25)
 
@@ -64,3 +65,32 @@ Independent measurements are attributed in the ledger and report.
   materials are excluded. Existing upstream files and notices remain intact.
 
 These checks do not rerun training, decode the dataset, or establish new results.
+
+## Sensitive-data review (2026-10-25)
+
+Scope: the published tracked snapshot, the complete 46-commit history before
+this documentation revision, newly added report-image metadata, and the
+Brain2Speech additions relative to the pinned speechBCI base. Ignored local
+research inputs and outputs were not uploaded or removed.
+
+- Gitleaks found no credential matches in the 46-commit history. Pattern checks
+  found no private interview/business materials, personal home paths, private
+  network addresses, or credential files in the Brain2Speech additions.
+  Report-image metadata had no detected local-path, GPS, or personal-email marker.
+- The upstream tree includes a WeNet Android example signing keystore with
+  hardcoded passwords in its Gradle configuration. The keystore is byte-identical
+  to the pinned public upstream version. This is inherited signing material,
+  not newly supplied Brain2Speech credentials; it must not be used as a private
+  production signing identity. The generic secret scan did not flag it.
+- The upstream test-logit NumPy fixture is also unchanged. Upstream notebooks
+  and third-party sources retain their original public paths and metadata.
+  Author identities in upstream history remain attributed to their authors.
+- The initial Brain2Speech publication commit exposed the author's personal
+  email. With explicit user authorization, that commit is rewritten with the
+  GitHub no-reply identity; subsequent commits use the same identity. Local
+  evidence is preserved. Rewriting branch history cannot recall earlier clones
+  or guarantee removal from GitHub caches and previously shared commit URLs.
+
+This is a bounded repository review, not a guarantee that every possible form
+of sensitive information has been detected. Published findings remain dated
+research records, with the evidence-availability limitations described above.
